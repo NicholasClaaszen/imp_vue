@@ -71,10 +71,10 @@ function handleResponse (response) {
 
     if (!response.ok) {
       if (response.status === 401) {
-        logout()
-        location.reload(true)
+        localStorage.removeItem('user')
+        window.location = '/login'
       }
-      const error = (data && data.message) || response.statusText
+      const error = (data && data.error) || response.statusText
       return Promise.reject(error)
     }
 

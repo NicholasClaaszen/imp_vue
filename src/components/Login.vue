@@ -11,7 +11,7 @@
 
         <div class="row" v-if="alert.message">
             <div class="col-12 col-sm-4 offset-sm-4">
-                <div :class="`alert ${alert.type}`">{{alert.message}}</div>
+                <div :class="`alert ${alert.type}`">{{ $t(`login.form.error.${alert.message}`) }}</div>
             </div>
         </div>
 
@@ -20,7 +20,7 @@
                 <b-form @submit.prevent="handleSubmit">
                     <b-form-group
                         id="email-group"
-                        label="E-mail adres"
+                        v-bind:label="$t('login.form.label.email')"
                         label-for="email"
                     >
                         <b-form-input
@@ -32,7 +32,7 @@
                     </b-form-group>
                     <b-form-group
                             id="password-group"
-                            label="Wachtwoord"
+                            v-bind:label="$t('login.form.label.password')"
                             label-for="password"
                     >
                         <b-form-input
@@ -42,7 +42,7 @@
                                 required>
                         </b-form-input>
                     </b-form-group>
-                    <b-button class="float-right" type="submit" variant="primary">Inloggen</b-button>
+                    <b-button class="float-right" type="submit" variant="primary">{{$t('login.form.button.submit')}}</b-button>
                 </b-form>
             </div>
         </div>

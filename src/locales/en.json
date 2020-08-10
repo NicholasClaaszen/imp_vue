@@ -1,0 +1,52 @@
+{
+	"login": {
+		"form": {
+			"button": {
+				"submit": "Login"
+			},
+			"error": {
+				"email_required": "Email address is a required field",
+				"not_found": "Unknown user",
+				"password_required": "Password is a required field"
+			},
+			"label": {
+				"email": "Email address",
+				"password": "Password"
+			}
+		}
+	},
+	"navbar": {
+		"label": {
+			"categories": "Categories",
+			"home": "Home",
+			"logout": "Logout",
+			"password": "Password",
+			"settings": "Settings"
+		},
+		"modal": {
+			"password": {
+				"form": {
+					"label": {
+						"password": "Password",
+						"repeat": "Repeat password"
+					}
+				},
+				"requirements": {
+					"capital": "Contains a capital",
+					"count": "At least 8 characters",
+					"match": "Passwords match",
+					"number": "Contains a number",
+					"punctuation": "Contains punctuation"
+				},
+				"result": {
+					"badrequirements": "Your password does not match requirements",
+					"ok": "Your password has been changed",
+					"waiting": ""
+				},
+				"text": "Enter a new password:",
+				"title": "Change Your Password"
+			}
+		}
+	},
+	"test": "This is a test, cool"
+}

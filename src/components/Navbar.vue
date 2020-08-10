@@ -7,9 +7,14 @@
 
                 <b-collapse id="nav-collapse" is-nav>
                     <b-navbar-nav class="ml-auto">
-                        <b-nav-item href="/" right>Home</b-nav-item>
-                        <b-nav-item v-on:click = "$bvModal.show('password_modal')" right>Wachtwoord</b-nav-item>
-                        <b-nav-item href="/login" right>Uitloggen</b-nav-item>
+                        <b-nav-item href="/" right>{{ $t('navbar.label.home') }}</b-nav-item>
+                        <b-nav-item-dropdown
+                                id="organisation-doprown" v-bind:text="$t('navbar.label.settings')" toggle-class="nav-link-custom"
+                                right v-if="this.$store.state.authentication.user.user.roles.includes('organisation')">
+                            <b-dropdown-item href="/categories">{{ $t('navbar.label.categories') }}</b-dropdown-item>
+                        </b-nav-item-dropdown>
+                        <b-nav-item v-on:click = "$bvModal.show('password_modal')" right>{{ $t('navbar.label.password') }}</b-nav-item>
+                        <b-nav-item href="/login" right>{{ $t('navbar.label.logout') }}</b-nav-item>
                     </b-navbar-nav>
                 </b-collapse>
             </b-navbar>
@@ -23,22 +28,22 @@
         </div>
         <b-modal
                 id="password_modal"
-                title="Wachtwoord Aanpassen"
+                v-bind:title="$t('navbar.modal.password.title')"
                 @ok="changePassword"
         >
             <p>
-                Voor een nieuw wachtwoord in:
+                {{ $t('navbar.modal.password.text') }}
             </p>
             <ul class="pass_list">
-                <li v-bind:class="{ is_valid: contains_eight_characters, pass_check: true}">Minimaal 8 tekens</li>
-                <li v-bind:class="{ is_valid: contains_number, pass_check: true }">Bevat een nummer</li>
-                <li v-bind:class="{ is_valid: contains_uppercase, pass_check: true }">Bevat een hoofdletter</li>
-                <li v-bind:class="{ is_valid: contains_special_character, pass_check: true }">Bevat een leesteken</li>
-                <li v-bind:class="{ is_valid: password_match, pass_check: true }">Wachtwoorden komen overeen</li>
+                <li v-bind:class="{ is_valid: contains_eight_characters, pass_check: true}">{{$t('navbar.modal.password.requirements.count')}}</li>
+                <li v-bind:class="{ is_valid: contains_number, pass_check: true }">{{$t('navbar.modal.password.requirements.number')}}</li>
+                <li v-bind:class="{ is_valid: contains_uppercase, pass_check: true }">{{$t('navbar.modal.password.requirements.capital')}}</li>
+                <li v-bind:class="{ is_valid: contains_special_character, pass_check: true }">{{$t('navbar.modal.password.requirements.punctuation')}}</li>
+                <li v-bind:class="{ is_valid: password_match, pass_check: true }">{{$t('navbar.modal.password.requirements.match')}}</li>
             </ul>
             <b-form-group
                           id="password_new-group"
-                          label="Wachtwoord"
+                          v-bind:label="$t('navbar.modal.password.form.label.password')"
                           label-for="password_new"
             >
                 <b-form-input
@@ -53,7 +58,7 @@
             </b-form-group>
             <b-form-group
                     id="password_repeat-group"
-                    label="Wachtwoord Herhalen"
+                    v-bind:label="$t('navbar.modal.password.form.label.repeat')"
                     label-for="password_repeat"
             >
                 <b-form-input
@@ -69,12 +74,12 @@
         </b-modal>
         <b-modal
                 id="password_result_modal"
-                title="Wachtwoord Aanpassen"
+                v-bind:title="$t('navbar.modal.password.title')"
                 @ok="$bvModal.hide('password_result_modal')"
                 ok-only
         >
             <p>
-                {{password_result}}
+                {{ $t(`navbar.modal.password.result.${password_result}`)}}
             </p>
         </b-modal>
     </div>
@@ -82,6 +87,7 @@
 
 <script>
     import {accountService} from "@/_services";
+    import { authService } from '../_services'
 
     export default {
         name: 'navbar',
@@ -98,20 +104,19 @@
                 contains_special_character: false,
                 password_match: false,
                 valid_password: false,
-                password_result: ''
+                password_result: 'waiting'
             }
         },
         mounted() {
             if(this.$store.state.authentication.status.loggedIn) {
-                this.manager = this.$store.state.authentication.user.manager;
-                this.corporation = this.$store.state.authentication.user.corporation;
+                authService.refresh()
             }
         },
         methods: {
             changePassword(e) {
                 if(this.valid_password) {
                     accountService.changePassword(this.password_new).then(() => {
-                        this.password_result = 'Uw wachtwoord is aangepast';
+                        this.password_result = 'ok';
                         this.$bvModal.show('password_result_modal');
                         this.password_new = '';
                         this.password_repeat = '';
@@ -119,7 +124,7 @@
                     })
                 } else {
                     e.preventDefault();
-                    this.password_result = 'Uw wachtwoord voldoet niet aan alle eisen';
+                    this.password_result = 'badrequirements';
                     this.$bvModal.show('password_result_modal');
                 }
 

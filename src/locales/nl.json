@@ -1,0 +1,52 @@
+{
+	"login": {
+		"form": {
+			"button": {
+				"submit": "Inloggen"
+			},
+			"error": {
+				"email_required": "E-mailadres is een verplicht veld",
+				"not_found": "Gegevens onbekend",
+				"password_required": "Wachtwoord is een verplicht veld"
+			},
+			"label": {
+				"email": "E-mail adres",
+				"password": "Wachtwoord"
+			}
+		}
+	},
+	"navbar": {
+		"label": {
+			"categories": "Categorieën",
+			"home": "Home",
+			"logout": "Uitloggen",
+			"password": "Wachtwoord",
+			"settings": "Beheer"
+		},
+		"modal": {
+			"password": {
+				"form": {
+					"label": {
+						"password": "Wachtwoord",
+						"repeat": "Wachtwoord herhalen"
+					}
+				},
+				"requirements": {
+					"capital": "Bevat een hoofdletter",
+					"count": "Minimaal 8 tekens",
+					"match": "Wachtwoorden komen overeen",
+					"number": "Bevat een nummer",
+					"punctuation": "Bevat een leesteken"
+				},
+				"result": {
+					"badrequirements": "Uw wachtwoord voldoet niet aan alle eisen",
+					"ok": "Uw wachtwoord is aangepast",
+					"waiting": ""
+				},
+				"text": "Voor een nieuw wachtwoord in:",
+				"title": "Wachtwoord aanpassen"
+			}
+		}
+	},
+	"test": "This is a test, cool"
+}

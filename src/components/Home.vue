@@ -2,7 +2,7 @@
   <div id="inner">
     <div class="row">
       <div class="col-12 text-center">
-
+        {{ $t('test') }}
       </div>
     </div>
     <div class="row">
@@ -21,10 +21,12 @@
 </template>
 
 <script>
+import { categoryService } from '../_services'
+
 export default {
   name: 'Home',
   mounted() {
-    console.log(this.$store.state.authentication.user.user.roles)
+
   }
 }
 </script>
