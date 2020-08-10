@@ -7,10 +7,14 @@
     </div>
     <div class="row">
       <div class="col-6">
-
+        Your roles are:
       </div>
       <div class="col-6">
-
+        <ul class="list">
+          <li v-for="role in this.$store.state.authentication.user.user.roles" :key="role">
+            {{role}}
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -20,7 +24,7 @@
 export default {
   name: 'Home',
   mounted() {
-
+    console.log(this.$store.state.authentication.user.user.roles)
   }
 }
 </script>
