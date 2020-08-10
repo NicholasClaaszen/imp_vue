@@ -312,3 +312,6 @@ a.nav-link {
 .page-item.active > a {
     color: white !important;
 }
+a>.fa {
+    color: white !important;
+}

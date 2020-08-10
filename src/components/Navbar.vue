@@ -9,12 +9,23 @@
                     <b-navbar-nav class="ml-auto">
                         <b-nav-item href="/" right>{{ $t('navbar.label.home') }}</b-nav-item>
                         <b-nav-item-dropdown
-                                id="organisation-doprown" v-bind:text="$t('navbar.label.settings')" toggle-class="nav-link-custom"
-                                right v-if="this.$store.state.authentication.user.user.roles.includes('organisation')">
+                                id="organisation-doprown"
+                                v-bind:text="$t('navbar.label.settings')"
+                                toggle-class="nav-link-custom"
+                                right v-if="this.$store.state.authentication.user.user.roles.includes('organisation')"
+                        >
                             <b-dropdown-item href="/categories">{{ $t('navbar.label.categories') }}</b-dropdown-item>
                         </b-nav-item-dropdown>
                         <b-nav-item v-on:click = "$bvModal.show('password_modal')" right>{{ $t('navbar.label.password') }}</b-nav-item>
                         <b-nav-item href="/login" right>{{ $t('navbar.label.logout') }}</b-nav-item>
+                        <b-nav-item-dropdown
+                                id="locale-doprown"
+                                v-bind:text="$t('navbar.label.locale')"
+                                toggle-class="nav-link-custom"
+                        >
+                            <b-dropdown-item v-on:click="changeLocale('en')">English</b-dropdown-item>
+                            <b-dropdown-item v-on:click="changeLocale('nl')">Nederlands</b-dropdown-item>
+                        </b-nav-item-dropdown>
                     </b-navbar-nav>
                 </b-collapse>
             </b-navbar>
@@ -113,6 +124,9 @@
             }
         },
         methods: {
+            changeLocale(locale) {
+              this.$root.$i18n.locale = locale
+            },
             changePassword(e) {
                 if(this.valid_password) {
                     accountService.changePassword(this.password_new).then(() => {

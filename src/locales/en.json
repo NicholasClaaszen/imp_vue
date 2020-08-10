@@ -1,4 +1,46 @@
 {
+	"category": {
+		"modal": {
+			"confirm_delete": {
+				"buttons": {
+					"cancel": "Cancel",
+					"ok": "Delete category"
+				},
+				"text": "<p>You're about to remove the following category:</p><p><strong>{0}</strong></p><p>Are you sure?</p>",
+				"title": "Delete Category"
+			}
+		},
+		"table": {
+			"actions": {
+				"delete": "Delete category",
+				"edit": "Edit category",
+				"new": "Add category"
+			},
+			"header": {
+				"icon": "Icon",
+				"name": "Name"
+			}
+		},
+		"title": "Manage Categories"
+	},
+	"category_edit": {
+		"form": {
+			"button": {
+				"submit": "Save"
+			},
+			"label": {
+				"icon": "Icon",
+				"name": "Name"
+			}
+		},
+		"title": {
+			"existing": "Edit category",
+			"new": "Add Category"
+		}
+	},
+	"general": {
+		"loading": "Loading..."
+	},
 	"login": {
 		"form": {
 			"button": {
@@ -19,6 +61,7 @@
 		"label": {
 			"categories": "Categories",
 			"home": "Home",
+			"locale": "Locale",
 			"logout": "Logout",
 			"password": "Password",
 			"settings": "Settings"

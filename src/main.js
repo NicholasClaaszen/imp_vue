@@ -10,6 +10,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'es6-promise/auto'
 
 require('./assets/css/common.css')
+require('./assets/css/font-awesome.min.css')
 
 Vue.config.productionTip = false
 Vue.use(Vuex)

@@ -1,6 +1,22 @@
 import { authHeader } from '../_helpers';
 
-function get() {
+function get(id) {
+  return authHeader().then(function(token){
+    const requestOptions = {
+      method: 'GET',
+      headers: token
+    };
+
+    return fetch(`${process.env.VUE_APP_API_URL}/category/${id}`, requestOptions).then(function(response){
+      return response.text().then(text => {
+        const data = text && JSON.parse(text);
+        return data;
+      });
+    });
+  })
+}
+
+function getAll() {
   return authHeader().then(function(token){
     const requestOptions = {
       method: 'GET',
@@ -68,6 +84,7 @@ function remove(id) {
 
 export const categoryService = {
   get,
+  getAll,
   post,
   put,
   remove

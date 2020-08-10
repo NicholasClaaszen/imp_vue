@@ -1,4 +1,46 @@
 {
+	"category": {
+		"modal": {
+			"confirm_delete": {
+				"buttons": {
+					"cancel": "Terug",
+					"ok": "Categorie verwijderen"
+				},
+				"text": "<p>U staat op het punt de volgende categorie te verwijderen:</p><p><strong>{0}</strong></p><p>Weet u dit zeker?</p>",
+				"title": "Categorie verwijderen"
+			}
+		},
+		"table": {
+			"actions": {
+				"delete": "Categorie verwijderen",
+				"edit": "Categorie aanpassen",
+				"new": "Nieuwe categorie"
+			},
+			"header": {
+				"icon": "Icoon",
+				"name": "Naam"
+			}
+		},
+		"title": "Categorieën beheren"
+	},
+	"category_edit": {
+		"form": {
+			"button": {
+				"submit": "Opslaan"
+			},
+			"label": {
+				"icon": "Icoon",
+				"name": "Naam"
+			}
+		},
+		"title": {
+			"existing": "Categorie bewerken",
+			"new": "Categorie toevoegen"
+		}
+	},
+	"general": {
+		"loading": "Bezig met laden..."
+	},
 	"login": {
 		"form": {
 			"button": {
@@ -19,6 +61,7 @@
 		"label": {
 			"categories": "Categorieën",
 			"home": "Home",
+			"locale": "Locale",
 			"logout": "Uitloggen",
 			"password": "Wachtwoord",
 			"settings": "Beheer"
