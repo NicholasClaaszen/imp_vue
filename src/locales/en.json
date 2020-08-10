@@ -26,6 +26,7 @@
 	"category_edit": {
 		"form": {
 			"button": {
+				"back": "Back",
 				"submit": "Save"
 			},
 			"label": {

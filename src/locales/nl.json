@@ -26,6 +26,7 @@
 	"category_edit": {
 		"form": {
 			"button": {
+				"back": "Terug",
 				"submit": "Opslaan"
 			},
 			"label": {

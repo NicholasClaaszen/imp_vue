@@ -19,14 +19,14 @@
                                 {{ $t('category.table.header.icon') }}
                             </th>
                             <th class="btn-group-sm">
-                                <a
-                                        href="/categories/new"
+                                <button
+                                        v-on:click="$router.push('/categories/new')"
                                         v-b-tooltip.hover
                                         :title="$t('category.table.actions.new')"
                                         class="btn btn-success btn-sm float-right"
                                 >
                                     <i class="fa fa-plus"></i>
-                                </a>
+                                </button>
                             </th>
                         </tr>
                     </thead>
@@ -48,14 +48,14 @@
                                     >
                                         <i class="fa fa-trash"></i>
                                     </button>
-                                    <a
-                                            :href="`/categories/${item.id}`"
+                                    <button
+                                            v-on:click="$router.push(`/categories/${item.id}`)"
                                             v-b-tooltip.hover
                                             :title="$t('category.table.actions.edit')"
                                             class="btn btn-success"
                                     >
                                         <i class="fa fa-pencil"></i>
-                                    </a>
+                                    </button>
                                 </div>
                             </td>
                         </tr>

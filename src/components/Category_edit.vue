@@ -34,7 +34,10 @@
                                 type="text"
                         />
                     </b-form-group>
-                    <b-button class="float-right" type="submit" variant="primary">{{ $t('category_edit.form.button.submit') }}</b-button>
+                    <b-button-group class="float-right">
+                        <b-button  v-on:click="$router.push('/categories')" variant="primary">{{ $t('category_edit.form.button.back') }}</b-button>
+                        <b-button type="submit" variant="success">{{ $t('category_edit.form.button.submit') }}</b-button>
+                    </b-button-group>
                 </b-form>
             </div>
         </div>
