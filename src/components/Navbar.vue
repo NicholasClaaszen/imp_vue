@@ -1,8 +1,10 @@
 <template>
     <div class="row">
         <div class="col-12" v-if="this.$store.state.authentication.status.loggedIn">
-            <b-navbar >
-                <b-navbar-brand v-on:click="$router.push('/')"><img id="branding" src="../assets/img/logo-white.svg"/></b-navbar-brand>
+            <b-navbar toggleable="lg">
+                <b-navbar-brand v-on:click="$router.push('/')">
+                    <img id="branding" src="../assets/img/logo-white.svg"/>
+                </b-navbar-brand>
                 <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
                 <b-collapse id="nav-collapse" is-nav>
@@ -14,7 +16,10 @@
                                 toggle-class="nav-link-custom"
                                 right v-if="this.$store.state.authentication.user.user.roles.includes('organisation')"
                         >
+                            <b-dropdown-item v-on:click="$router.push('/contacts')">{{ $t('navbar.label.contacts') }}</b-dropdown-item>
+                            <b-dropdown-item v-on:click="$router.push('/storage/locations')">{{ $t('navbar.label.storage_locations') }}</b-dropdown-item>
                             <b-dropdown-item v-on:click="$router.push('/categories')">{{ $t('navbar.label.categories') }}</b-dropdown-item>
+                            <b-dropdown-item v-on:click="$router.push('/organisations')">{{ $t('navbar.label.organisations') }}</b-dropdown-item>
                         </b-nav-item-dropdown>
                         <b-nav-item v-on:click = "$bvModal.show('password_modal')" right>{{ $t('navbar.label.password') }}</b-nav-item>
                         <b-nav-item href="/login" right>{{ $t('navbar.label.logout') }}</b-nav-item>

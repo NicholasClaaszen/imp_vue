@@ -8,8 +8,6 @@
     <div class="row">
       <div class="col-6">
         Your roles are:
-      </div>
-      <div class="col-6">
         <ul class="list">
           <li v-for="role in this.$store.state.authentication.user.user.roles" :key="role">
             {{role}}
@@ -21,13 +19,16 @@
 </template>
 
 <script>
-import { categoryService } from '../_services'
+  export default {
+    data: () => {
+      return {
 
-export default {
-  name: 'Home',
-  mounted() {
+      }
+    },
+    name: 'Home',
+    mounted() {
 
-  }
+    }
 }
 </script>
 

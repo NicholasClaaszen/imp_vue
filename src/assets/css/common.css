@@ -234,11 +234,18 @@ body {
 }
 /* Navbar */
 #branding {
-    
     width: 100%;
 }
 .navbar {
     align-items: flex-end;
+}
+@media (max-width: 991px) {
+    .navbar-brand {
+        width: 75%;
+    }
+    .navbar {
+        align-items: center;
+    }
 }
 .nav-item {
     margin-left: 15px;
@@ -246,6 +253,9 @@ body {
 }
 a.nav-link {
     color: white !important;
+}
+.navbar-toggler {
+    background-color: white;
 }
 
 /* Icons*/

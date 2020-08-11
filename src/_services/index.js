@@ -1,3 +1,7 @@
 export * from './auth.service'
 export * from './account.service'
 export * from './category.service'
+export * from './contact.service'
+export * from './storage_location.service'
+export * from './organisation.service'
+export * from './contact.service'

@@ -39,6 +39,48 @@
 			"new": "Add Category"
 		}
 	},
+	"contact": {
+		"modal": {
+			"confirm_delete": {
+				"buttons": {
+					"cancel": "Cancel",
+					"ok": "Delete contact"
+				},
+				"text": "<p>You're about to remove the following contact:</p><p><strong>{0}</strong></p><p>Are you sure?</p>",
+				"title": "Delete Contact"
+			}
+		},
+		"table": {
+			"actions": {
+				"delete": "Delete contact",
+				"edit": "Edit contact",
+				"new": "Add contact"
+			},
+			"header": {
+				"email": "Email",
+				"name": "Name",
+				"phone": "Phone"
+			}
+		},
+		"title": "Manage Contacts"
+	},
+	"contact_edit": {
+		"form": {
+			"button": {
+				"back": "Back",
+				"submit": "Save"
+			},
+			"label": {
+				"email": "Email address",
+				"name": "Name",
+				"phone": "Phonenumber"
+			}
+		},
+		"title": {
+			"existing": "Edit contact",
+			"new": "Add contact"
+		}
+	},
 	"general": {
 		"loading": "Loading..."
 	},
@@ -61,11 +103,14 @@
 	"navbar": {
 		"label": {
 			"categories": "Categories",
+			"contacts": "Contacts",
 			"home": "Home",
 			"locale": "Locale",
 			"logout": "Logout",
+			"organisations": "Organisations",
 			"password": "Password",
-			"settings": "Settings"
+			"settings": "Settings",
+			"storage_locations": "Storage Locations"
 		},
 		"modal": {
 			"password": {
@@ -90,6 +135,82 @@
 				"text": "Enter a new password:",
 				"title": "Change Your Password"
 			}
+		}
+	},
+	"organisation": {
+		"table": {
+			"actions": {
+				"edit": "Edit"
+			},
+			"default": {
+				"false": "No",
+				"true": "Yes"
+			},
+			"header": {
+				"contact": "Contactperson",
+				"isDefault": "Default organisation",
+				"name": "Name"
+			}
+		},
+		"title": "Organisations"
+	},
+	"organisation_edit": {
+		"form": {
+			"button": {
+				"back": "Back",
+				"submit": "Save"
+			},
+			"label": {
+				"baseURL": "Base URL",
+				"contact": "Contact",
+				"name": "Name"
+			}
+		},
+		"title": {
+			"existing": "Edit organisation"
+		}
+	},
+	"storage_location": {
+		"modal": {
+			"confirm_delete": {
+				"buttons": {
+					"cancel": "Cancel",
+					"ok": "Delete storage location"
+				},
+				"text": "<p>You're about to remove the following storage location:</p><p><strong>{0}</strong></p><p>Are you sure?</p>",
+				"title": "Delete  storage location"
+			}
+		},
+		"table": {
+			"actions": {
+				"delete": "Delete Storage Location",
+				"edit": "Edit storage location",
+				"new": "Add storage location"
+			},
+			"header": {
+				"address": "Address",
+				"contact": "Contact",
+				"name": "Name",
+				"organisation": "Organisation"
+			}
+		},
+		"title": "Manage Storage Locations"
+	},
+	"storage_location_edit": {
+		"form": {
+			"button": {
+				"back": "Back",
+				"submit": "Save"
+			},
+			"label": {
+				"address": "Address",
+				"contact": "Contact",
+				"name": "Name"
+			}
+		},
+		"title": {
+			"existing": "Edit storage location",
+			"new": "New storage location"
 		}
 	},
 	"test": "This is a test, cool"

@@ -30,9 +30,6 @@
         // clear alert on location change
         this.navKey++;
         this.$store.dispatch('alert/clear');
-      },
-      manager (){
-        this.componentKey += 1;
       }
     },
 

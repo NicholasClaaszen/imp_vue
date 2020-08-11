@@ -39,6 +39,48 @@
 			"new": "Categorie toevoegen"
 		}
 	},
+	"contact": {
+		"modal": {
+			"confirm_delete": {
+				"buttons": {
+					"cancel": "Terug",
+					"ok": "Contactpersoon verwijderen"
+				},
+				"text": "<p>U staat op het punt de volgende contactpersoon te verwijderen:</p><p><strong>{0}</strong></p><p>Weet u dit zeker?</p>",
+				"title": "Contactpersoon verwijderen"
+			}
+		},
+		"table": {
+			"actions": {
+				"delete": "Contactpersoon verwijderen",
+				"edit": "Contactpersoon aanpassen",
+				"new": "Nieuwe contactpersoon"
+			},
+			"header": {
+				"email": "E-mail",
+				"name": "Naam",
+				"phone": "Telefoon"
+			}
+		},
+		"title": "Contactpersonen beheren"
+	},
+	"contact_edit": {
+		"form": {
+			"button": {
+				"back": "Terug",
+				"submit": "Opslaan"
+			},
+			"label": {
+				"email": "E-mailadres",
+				"name": "Naam",
+				"phone": "Telefoonnummer"
+			}
+		},
+		"title": {
+			"existing": "Contact bewerken",
+			"new": "Contact toevoegen"
+		}
+	},
 	"general": {
 		"loading": "Bezig met laden..."
 	},
@@ -61,11 +103,14 @@
 	"navbar": {
 		"label": {
 			"categories": "Categorieën",
+			"contacts": "Contactpersonen",
 			"home": "Home",
 			"locale": "Locale",
 			"logout": "Uitloggen",
+			"organisations": "Organisaties",
 			"password": "Wachtwoord",
-			"settings": "Beheer"
+			"settings": "Beheer",
+			"storage_locations": "Opslag Locaties"
 		},
 		"modal": {
 			"password": {
@@ -90,6 +135,82 @@
 				"text": "Voor een nieuw wachtwoord in:",
 				"title": "Wachtwoord aanpassen"
 			}
+		}
+	},
+	"organisation": {
+		"table": {
+			"actions": {
+				"edit": "Aanpassen"
+			},
+			"default": {
+				"false": "Nee",
+				"true": "Ja"
+			},
+			"header": {
+				"contact": "Contactpersoon",
+				"isDefault": "Eigen organisatie",
+				"name": "Naam"
+			}
+		},
+		"title": "Organisaties"
+	},
+	"organisation_edit": {
+		"form": {
+			"button": {
+				"back": "Terug",
+				"submit": "Opslaan"
+			},
+			"label": {
+				"baseURL": "Basis URL",
+				"contact": "Contactpersoon",
+				"name": "Naam"
+			}
+		},
+		"title": {
+			"existing": "Organisatie bewerken"
+		}
+	},
+	"storage_location": {
+		"modal": {
+			"confirm_delete": {
+				"buttons": {
+					"cancel": "Terug",
+					"ok": "Opslag Locatie verwijderen"
+				},
+				"text": "<p>U staat op het punt de volgende Opslag Locatie te verwijderen:</p><p><strong>{0}</strong></p><p>Weet u dit zeker?</p>",
+				"title": "Opslag Locatie verwijderen"
+			}
+		},
+		"table": {
+			"actions": {
+				"delete": "Opslag Locatie verwijderen",
+				"edit": "Opslag Locatie aanpassen",
+				"new": "Nieuwe opslag locatie"
+			},
+			"header": {
+				"address": "Adres",
+				"contact": "Contactpersoon",
+				"name": "Naam",
+				"organisation": "Organisatie"
+			}
+		},
+		"title": "Opslag Locaties Beheren"
+	},
+	"storage_location_edit": {
+		"form": {
+			"button": {
+				"back": "Terug",
+				"submit": "Opslaan"
+			},
+			"label": {
+				"address": "Adres",
+				"contact": "Contactpersoon",
+				"name": "Naam"
+			}
+		},
+		"title": {
+			"existing": "Opslag locatie bewerken",
+			"new": "Nieuwe opslag locatie"
 		}
 	},
 	"test": "This is a test, cool"
