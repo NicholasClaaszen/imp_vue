@@ -12,6 +12,8 @@ import Contacts_view from '../components/Contacts_view'
 import Contacts_edit from '../components/Contacts_edit'
 import Storage_Location_view from '../components/Storage_Location_view'
 import Storage_Location_edit from '../components/Storage_Location_edit'
+import Storage_Container_view from '../components/Storage_Container_view'
+import Storage_Container_edit from '../components/Storage_Container_edit'
 
 Vue.use(Router)
 
@@ -30,6 +32,8 @@ export const router = new Router({
     { path: '/contacts/:id', component: Contacts_edit },
     { path: '/storage/locations', component: Storage_Location_view },
     { path: '/storage/locations/:id', component: Storage_Location_edit },
+    { path: '/storage/containers', component: Storage_Container_view },
+    { path: '/storage/containers/:id', component: Storage_Container_edit },
     // otherwise redirect to home
     { path: '*', redirect: '/' }
   ]

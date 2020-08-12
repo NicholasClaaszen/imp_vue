@@ -170,6 +170,49 @@
 			"existing": "Organisatie bewerken"
 		}
 	},
+	"storage_container": {
+		"modal": {
+			"confirm_delete": {
+				"buttons": {
+					"cancel": "Terug",
+					"ok": "Opslag container verwijderen"
+				},
+				"text": "<p>U staat op het punt de volgende Opslag container te verwijderen:</p><p><strong>{0}</strong></p><p>Weet u dit zeker?</p>",
+				"title": "Opslag container verwijderen"
+			}
+		},
+		"table": {
+			"actions": {
+				"delete": "Opslag container verwijderen",
+				"edit": "Opslag container aanpassen",
+				"new": "Nieuwe opslag container"
+			},
+			"header": {
+				"contact": "Contactpersoon",
+				"location": "Locatie",
+				"name": "Naam",
+				"organisation": "Organisatie"
+			}
+		},
+		"title": "Opslag containers Beheren"
+	},
+	"storage_container_edit": {
+		"form": {
+			"button": {
+				"back": "Terug",
+				"submit": "Opslaan"
+			},
+			"label": {
+				"description": "Beschrijving",
+				"location": "Locatie",
+				"name": "Naam"
+			}
+		},
+		"title": {
+			"existing": "Opslag container bewerken",
+			"new": "Nieuwe opslag container"
+		}
+	},
 	"storage_location": {
 		"modal": {
 			"confirm_delete": {

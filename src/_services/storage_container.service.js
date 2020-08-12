@@ -7,7 +7,7 @@ function get(id) {
       headers: token
     };
 
-    return fetch(`${process.env.VUE_APP_API_URL}/storage/location/${id}`, requestOptions).then(function(response){
+    return fetch(`${process.env.VUE_APP_API_URL}/storage/container/${id}`, requestOptions).then(function(response){
       return response.text().then(text => {
         const data = text && JSON.parse(text);
         return data;
@@ -15,23 +15,6 @@ function get(id) {
     });
   })
 }
-
-function getContainers(id) {
-  return authHeader().then(function(token){
-    const requestOptions = {
-      method: 'GET',
-      headers: token
-    };
-
-    return fetch(`${process.env.VUE_APP_API_URL}/storage/location/${id}/containers`, requestOptions).then(function(response){
-      return response.text().then(text => {
-        const data = text && JSON.parse(text);
-        return data;
-      });
-    });
-  })
-}
-
 
 function getAll() {
   return authHeader().then(function(token){
@@ -40,7 +23,7 @@ function getAll() {
       headers: token
     };
 
-    return fetch(`${process.env.VUE_APP_API_URL}/storage/location`, requestOptions).then(function(response){
+    return fetch(`${process.env.VUE_APP_API_URL}/storage/container`, requestOptions).then(function(response){
       return response.text().then(text => {
         const data = text && JSON.parse(text);
         return data;
@@ -49,15 +32,15 @@ function getAll() {
   })
 }
 
-function post(name, address, contactId) {
+function post(name, description, locationId) {
   return authHeader().then(function(token){
     const requestOptions = {
       method: 'POST',
       headers: token,
-      body: JSON.stringify({name, address, contactId})
+      body: JSON.stringify({name, description, locationId})
     };
 
-    return fetch(`${process.env.VUE_APP_API_URL}/storage/location`, requestOptions).then(function(response){
+    return fetch(`${process.env.VUE_APP_API_URL}/storage/container`, requestOptions).then(function(response){
       return response.text().then(text => {
         const data = text && JSON.parse(text);
         return data;
@@ -66,15 +49,15 @@ function post(name, address, contactId) {
   })
 }
 
-function put(id, name, address, contactId) {
+function put(id, name, description, locationId) {
   return authHeader().then(function(token){
     const requestOptions = {
       method: 'PUT',
       headers: token,
-      body: JSON.stringify({name, address, contactId})
+      body: JSON.stringify({name, description, locationId})
     };
 
-    return fetch(`${process.env.VUE_APP_API_URL}/storage/location/${id}`, requestOptions).then(function(response){
+    return fetch(`${process.env.VUE_APP_API_URL}/storage/container/${id}`, requestOptions).then(function(response){
       return response.text().then(text => {
         const data = text && JSON.parse(text);
         return data;
@@ -90,7 +73,7 @@ function remove(id) {
       headers: token
     };
 
-    return fetch(`${process.env.VUE_APP_API_URL}/storage/location/${id}`, requestOptions).then(function(response){
+    return fetch(`${process.env.VUE_APP_API_URL}/storage/container/${id}`, requestOptions).then(function(response){
       return response.text().then(text => {
         const data = text && JSON.parse(text);
         return data;
@@ -99,9 +82,8 @@ function remove(id) {
   })
 }
 
-export const storage_locationService = {
+export const storage_containerService = {
   get,
-  getContainers,
   getAll,
   post,
   put,
