@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12">
                 <h1>
-                    {{ $t(`storage_location_edit.title.${this.isNew ? 'new' : 'existing'}`) }}
+                    {{ $t(`storage_container_edit.title.${this.isNew ? 'new' : 'existing'}`) }}
                 </h1>
             </div>
         </div>
@@ -15,7 +15,7 @@
                 <b-form @submit.prevent="handleSubmit">
                     <b-form-group
                             id="name-group"
-                            :label="$t('storage_location_edit.form.label.name')"
+                            :label="$t('storage_container_edit.form.label.name')"
                             label-for="name">
                         <b-form-input
                                 id="name"
@@ -26,32 +26,32 @@
                     </b-form-group>
                     <b-form-group
                             id="name-group"
-                            :label="$t('storage_location_edit.form.label.address')"
-                            label-for="address">
+                            :label="$t('storage_container_edit.form.label.description')"
+                            label-for="description">
                         <b-form-input
-                                id="address"
-                                v-model="form.address"
+                                id="description"
+                                v-model="form.description"
                                 type="text"
                         />
                     </b-form-group>
                     <b-form-group
                             id="label-group"
-                            :label="$t('storage_location_edit.form.label.contact')"
-                            label-for="contact_id"
+                            :label="$t('storage_container_edit.form.label.location')"
+                            label-for="location_id"
                     >
                         <b-form-select
-                                v-model="form.contact_id"
-                                id="contact_id"
+                                v-model="form.location_id"
+                                id="location_id"
                                 required
                         >
-                            <b-form-select-option v-for="item in contacts" :key="item.id" :value="item.id">
+                            <b-form-select-option v-for="item in locations" :key="item.id" :value="item.id">
                                 {{item.name}}
                             </b-form-select-option>
                         </b-form-select>
                     </b-form-group>
                     <b-button-group class="float-right">
-                        <b-button  v-on:click="$router.push('/storage/locations')" variant="primary">{{ $t('storage_location_edit.form.button.back') }}</b-button>
-                        <b-button type="submit" variant="success">{{ $t('storage_location_edit.form.button.submit') }}</b-button>
+                        <b-button  v-on:click="$router.push('/storage/containers')" variant="primary">{{ $t('storage_container_edit.form.button.back') }}</b-button>
+                        <b-button type="submit" variant="success">{{ $t('storage_container_edit.form.button.submit') }}</b-button>
                     </b-button-group>
                 </b-form>
             </div>
@@ -72,56 +72,56 @@
 
 <script>
   import validator from "validator/es";
-  import { contactService, storage_locationService } from '../_services'
+  import { storageContainerService, storageLocationService } from '../_services'
 
   export default {
-    name: 'storage_location_edit',
+    name: 'storageContainerEdit',
     data: () => {
       return {
         finished: false,
         isNew: false,
-        contacts: [],
+        locations: [],
         form: {
           name: '',
-          address: '',
-          contact_id: ''
+          description: '',
+          location_id: ''
         }
       }
     },
     async mounted() {
-      contactService.getAll().then((data) => {
-        this.contacts = data
+      storageLocationService.getAll().then((data) => {
+        this.locations = data
       })
-      await this.loadStorage_location()
+      await this.loadStorage_container()
     },
     methods: {
       handleSubmit() {
         if(this.isNew) {
-          storage_locationService.post(this.form.name, this.form.address, this.form.contact_id).then(() => {
-            this.$router.push('/storage/locations')
+          storageContainerService.post(this.form.name, this.form.description, this.form.location_id).then(() => {
+            this.$router.push('/storage/containers')
           })
         } else {
-          storage_locationService.put(this.$route.params.id, this.form.name, this.form.address, this.form.contact_id).then(() => {
-            this.$router.push('/storage/locations')
+          storageContainerService.put(this.$route.params.id, this.form.name, this.form.description, this.form.location_id).then(() => {
+            this.$router.push('/storage/containers')
           })
         }
       },
-      async loadStorage_location() {
+      async loadStorage_container() {
         if(!validator.isUUID(this.$route.params.id)) {
           if(this.$route.params.id === 'new') {
             this.isNew = true
             this.finished = true
           } else {
-            this.$router.push('/storage/locations')
+            this.$router.push('/storage/containers')
           }
         } else {
-          storage_locationService.get(this.$route.params.id).then((data) => {
+          storageContainerService.get(this.$route.params.id).then((data) => {
             if(data.id.length === 0) {
-              this.$router.push('/storage/locations')
+              this.$router.push('/storage/containers')
             } else {
               this.form.name = data.name
-              this.form.address = data.address
-              this.form.contact_id = data.contact_id
+              this.form.description = data.description
+              this.form.location_id = data.location_id
               this.finished = true
             }
           })

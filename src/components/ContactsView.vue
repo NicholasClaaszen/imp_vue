@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12">
                 <h1>
-                    {{ $t('category.title') }}
+                    {{ $t('contact.title') }}
                 </h1>
             </div>
         </div>
@@ -13,16 +13,19 @@
                     <thead>
                         <tr>
                             <th>
-                                {{ $t('category.table.header.name') }}
+                                {{ $t('contact.table.header.name') }}
                             </th>
                             <th>
-                                {{ $t('category.table.header.icon') }}
+                                {{ $t('contact.table.header.email') }}
+                            </th>
+                            <th>
+                                {{ $t('contact.table.header.phone') }}
                             </th>
                             <th class="btn-group-sm">
                                 <button
-                                        v-on:click="$router.push('/categories/new')"
+                                        v-on:click="$router.push('/contacts/new')"
                                         v-b-tooltip.hover
-                                        :title="$t('category.table.actions.new')"
+                                        :title="$t('contact.table.actions.new')"
                                         class="btn btn-success btn-sm float-right"
                                 >
                                     <i class="fa fa-plus"></i>
@@ -31,27 +34,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="item in categories" :key="item.id">
+                        <tr v-for="item in contacts" :key="item.id">
                             <td>
                                 {{ item.name }}
                             </td>
                             <td>
-                                {{ item.icon }}
+                                {{ item.email }}
+                            </td>
+                            <td>
+                                {{ item.phone }}
                             </td>
                             <td>
                                 <div class="btn-group btn-group-sm float-right">
                                     <button
                                             v-b-tooltip.hover
-                                            :title="$t('category.table.actions.delete')"
+                                            :title="$t('contact.table.actions.delete')"
                                             class="btn btn-danger"
                                             v-on:click="removeModal(item.id, item.name)"
                                     >
                                         <i class="fa fa-trash"></i>
                                     </button>
                                     <button
-                                            v-on:click="$router.push(`/categories/${item.id}`)"
+                                            v-on:click="$router.push(`/contacts/${item.id}`)"
                                             v-b-tooltip.hover
-                                            :title="$t('category.table.actions.edit')"
+                                            :title="$t('contact.table.actions.edit')"
                                             class="btn btn-success"
                                     >
                                         <i class="fa fa-pencil"></i>
@@ -76,12 +82,12 @@
         <b-modal
                 id="modal_confirm_delete"
                 size="lg"
-                :title="$t('category.modal.confirm_delete.title')"
-                :ok-title="$t('category.modal.confirm_delete.buttons.ok')"
-                :cancel-title="$t('category.modal.confirm_delete.buttons.cancel')"
-                @ok="removeCategory"
+                :title="$t('contact.modal.confirm_delete.title')"
+                :ok-title="$t('contact.modal.confirm_delete.buttons.ok')"
+                :cancel-title="$t('contact.modal.confirm_delete.buttons.cancel')"
+                @ok="removecontact"
         >
-            <div v-html="$t('category.modal.confirm_delete.text', [this.remove.name])"></div>
+            <div v-html="$t('contact.modal.confirm_delete.text', [this.remove.name])"></div>
         </b-modal>
     </div>
 </template>
@@ -89,14 +95,14 @@
 
 
 <script>
-  import { categoryService } from '../_services'
+  import { contactService } from '../_services'
 
   export default {
-    name: 'Category_view',
+    name: 'contactView',
     data: () => {
       return {
         finished: false,
-        categories: [],
+        contacts: [],
         remove: {
           id: '',
           name: ''
@@ -104,18 +110,18 @@
       }
     },
     mounted() {
-        this.loadCategory()
+        this.loadcontact()
     },
     methods: {
-      async loadCategory() {
-        categoryService.getAll().then((data) => {
-          this.categories = data
+      async loadcontact() {
+        contactService.getAll().then((data) => {
+          this.contacts = data
           this.finished = true
         })
       },
-      async removeCategory() {
-        categoryService.remove(this.remove.id).then((data) => {
-            this.loadCategory()
+      async removecontact() {
+        contactService.remove(this.remove.id).then((data) => {
+            this.loadcontact()
         })
       },
       removeModal(id, name) {

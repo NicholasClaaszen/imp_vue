@@ -75,7 +75,7 @@
   import { organisationService } from '../_services'
 
   export default {
-    name: 'organisation_view',
+    name: 'organisationView',
     data: () => {
       return {
         finished: false,

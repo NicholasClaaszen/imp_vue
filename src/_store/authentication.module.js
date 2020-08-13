@@ -1,7 +1,7 @@
 import { authService } from '../_services'
 import { router } from '../_helpers'
 
-const user = JSON.parse(localStorage.getItem('user'))
+const user = JSON.parse(window.localStorage.getItem('user'))
 const initialState = user
   ? {
     status: {

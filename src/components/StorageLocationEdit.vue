@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12">
                 <h1>
-                    {{ $t(`organisation_edit.title.${this.isNew ? 'new' : 'existing'}`) }}
+                    {{ $t(`storage_location_edit.title.${this.isNew ? 'new' : 'existing'}`) }}
                 </h1>
             </div>
         </div>
@@ -15,7 +15,7 @@
                 <b-form @submit.prevent="handleSubmit">
                     <b-form-group
                             id="name-group"
-                            :label="$t('organisation_edit.form.label.name')"
+                            :label="$t('storage_location_edit.form.label.name')"
                             label-for="name">
                         <b-form-input
                                 id="name"
@@ -26,17 +26,17 @@
                     </b-form-group>
                     <b-form-group
                             id="name-group"
-                            :label="$t('organisation_edit.form.label.baseURL')"
-                            label-for="icon">
+                            :label="$t('storage_location_edit.form.label.address')"
+                            label-for="address">
                         <b-form-input
-                                id="baseURL"
-                                v-model="form.baseURL"
+                                id="address"
+                                v-model="form.address"
                                 type="text"
                         />
                     </b-form-group>
                     <b-form-group
                             id="label-group"
-                            :label="$t('organisation_edit.form.label.contact')"
+                            :label="$t('storage_location_edit.form.label.contact')"
                             label-for="contact_id"
                     >
                         <b-form-select
@@ -50,8 +50,8 @@
                         </b-form-select>
                     </b-form-group>
                     <b-button-group class="float-right">
-                        <b-button  v-on:click="$router.push('/organisations')" variant="primary">{{ $t('organisation_edit.form.button.back') }}</b-button>
-                        <b-button type="submit" variant="success">{{ $t('organisation_edit.form.button.submit') }}</b-button>
+                        <b-button  v-on:click="$router.push('/storage/locations')" variant="primary">{{ $t('storage_location_edit.form.button.back') }}</b-button>
+                        <b-button type="submit" variant="success">{{ $t('storage_location_edit.form.button.submit') }}</b-button>
                     </b-button-group>
                 </b-form>
             </div>
@@ -72,10 +72,10 @@
 
 <script>
   import validator from "validator/es";
-  import { contactService, organisationService } from '../_services'
+  import { contactService, storageLocationService } from '../_services'
 
   export default {
-    name: 'organisation_edit',
+    name: 'storageLocationEdit',
     data: () => {
       return {
         finished: false,
@@ -83,7 +83,7 @@
         contacts: [],
         form: {
           name: '',
-          baseURL: '',
+          address: '',
           contact_id: ''
         }
       }
@@ -92,24 +92,35 @@
       contactService.getAll().then((data) => {
         this.contacts = data
       })
-      await this.loadorganisation()
+      await this.loadStorage_location()
     },
     methods: {
       handleSubmit() {
-          organisationService.put(this.$route.params.id, this.form.name, this.form.baseURL, this.form.contact_id).then(() => {
-            this.$router.push('/organisations')
+        if(this.isNew) {
+          storageLocationService.post(this.form.name, this.form.address, this.form.contact_id).then(() => {
+            this.$router.push('/storage/locations')
           })
-      },
-      async loadorganisation() {
-        if(!validator.isUUID(this.$route.params.id)) {
-          this.$router.push('/organisations')
         } else {
-          organisationService.get(this.$route.params.id).then((data) => {
-            if(data.isDefault === undefined || data.isDefault === false) {
-              this.$router.push('/organisations')
+          storageLocationService.put(this.$route.params.id, this.form.name, this.form.address, this.form.contact_id).then(() => {
+            this.$router.push('/storage/locations')
+          })
+        }
+      },
+      async loadStorage_location() {
+        if(!validator.isUUID(this.$route.params.id)) {
+          if(this.$route.params.id === 'new') {
+            this.isNew = true
+            this.finished = true
+          } else {
+            this.$router.push('/storage/locations')
+          }
+        } else {
+          storageLocationService.get(this.$route.params.id).then((data) => {
+            if(data.id.length === 0) {
+              this.$router.push('/storage/locations')
             } else {
               this.form.name = data.name
-              this.form.baseURL = data.baseURL
+              this.form.address = data.address
               this.form.contact_id = data.contact_id
               this.finished = true
             }

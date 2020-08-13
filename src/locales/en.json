@@ -110,6 +110,7 @@
 			"organisations": "Organisations",
 			"password": "Password",
 			"settings": "Settings",
+			"storage_containers": "Storage Containers",
 			"storage_locations": "Storage Locations"
 		},
 		"modal": {

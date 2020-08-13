@@ -105,10 +105,10 @@
 
 
 <script>
-  import { storage_containerService } from '../_services'
+  import { storageContainerService } from '../_services'
 
   export default {
-    name: 'storage_container_view',
+    name: 'storageContainerView',
     data: () => {
       return {
         finished: false,
@@ -125,7 +125,7 @@
     },
     methods: {
       async loadstorage_container() {
-        storage_containerService.getAll().then((data) => {
+        storageContainerService.getAll().then((data) => {
           this.locations = []
           this.containers = data
           for(const container of this.containers) {
@@ -141,11 +141,10 @@
             }
           }
           this.finished = true
-          console.log(this.locations)
         })
       },
       async removestorage_container() {
-        storage_containerService.remove(this.remove.id).then((data) => {
+        storageContainerService.remove(this.remove.id).then((data) => {
             this.loadstorage_container()
         })
       },

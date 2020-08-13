@@ -70,7 +70,7 @@
   import { contactService } from '../_services'
 
   export default {
-    name: 'contact_edit',
+    name: 'contactEdit',
     data: () => {
       return {
         finished: false,

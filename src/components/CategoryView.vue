@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12">
                 <h1>
-                    {{ $t('storage_location.title') }}
+                    {{ $t('category.title') }}
                 </h1>
             </div>
         </div>
@@ -13,22 +13,16 @@
                     <thead>
                         <tr>
                             <th>
-                                {{ $t('storage_location.table.header.name') }}
+                                {{ $t('category.table.header.name') }}
                             </th>
                             <th>
-                                {{ $t('storage_location.table.header.address') }}
-                            </th>
-                            <th>
-                                {{ $t('storage_location.table.header.organisation') }}
-                            </th>
-                            <th>
-                                {{ $t('storage_location.table.header.contact') }}
+                                {{ $t('category.table.header.icon') }}
                             </th>
                             <th class="btn-group-sm">
                                 <button
-                                        v-on:click="$router.push('/storage/locations/new')"
+                                        v-on:click="$router.push('/categories/new')"
                                         v-b-tooltip.hover
-                                        :title="$t('storage_location.table.actions.new')"
+                                        :title="$t('category.table.actions.new')"
                                         class="btn btn-success btn-sm float-right"
                                 >
                                     <i class="fa fa-plus"></i>
@@ -37,35 +31,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="item in locations" :key="item.id">
+                        <tr v-for="item in categories" :key="item.id">
                             <td>
                                 {{ item.name }}
                             </td>
                             <td>
-                                {{ item.address }}
-                            </td>
-                            <td>
-                                {{ item.organisation_name }}
-                            </td>
-                            <td>
-                                {{ item.contact_name }}<br/>
-                                {{ item.contact_phone }}<br/>
-                                <a :href="`mailto:${item.contact_email}`" target="_blank">{{ item.contact_email }}</a>
+                                {{ item.icon }}
                             </td>
                             <td>
                                 <div class="btn-group btn-group-sm float-right">
                                     <button
                                             v-b-tooltip.hover
-                                            :title="$t('storage_location.table.actions.delete')"
+                                            :title="$t('category.table.actions.delete')"
                                             class="btn btn-danger"
                                             v-on:click="removeModal(item.id, item.name)"
                                     >
                                         <i class="fa fa-trash"></i>
                                     </button>
                                     <button
-                                            v-on:click="$router.push(`/storage/locations/${item.id}`)"
+                                            v-on:click="$router.push(`/categories/${item.id}`)"
                                             v-b-tooltip.hover
-                                            :title="$t('storage_location.table.actions.edit')"
+                                            :title="$t('category.table.actions.edit')"
                                             class="btn btn-success"
                                     >
                                         <i class="fa fa-pencil"></i>
@@ -90,12 +76,12 @@
         <b-modal
                 id="modal_confirm_delete"
                 size="lg"
-                :title="$t('storage_location.modal.confirm_delete.title')"
-                :ok-title="$t('storage_location.modal.confirm_delete.buttons.ok')"
-                :cancel-title="$t('storage_location.modal.confirm_delete.buttons.cancel')"
-                @ok="removestorage_location"
+                :title="$t('category.modal.confirm_delete.title')"
+                :ok-title="$t('category.modal.confirm_delete.buttons.ok')"
+                :cancel-title="$t('category.modal.confirm_delete.buttons.cancel')"
+                @ok="removeCategory"
         >
-            <div v-html="$t('storage_location.modal.confirm_delete.text', [this.remove.name])"></div>
+            <div v-html="$t('category.modal.confirm_delete.text', [this.remove.name])"></div>
         </b-modal>
     </div>
 </template>
@@ -103,14 +89,14 @@
 
 
 <script>
-  import { storage_locationService } from '../_services'
+  import { categoryService } from '../_services'
 
   export default {
-    name: 'storage_location_view',
+    name: 'CategoryView',
     data: () => {
       return {
         finished: false,
-        locations: [],
+        categories: [],
         remove: {
           id: '',
           name: ''
@@ -118,18 +104,18 @@
       }
     },
     mounted() {
-        this.loadstorage_location()
+        this.loadCategory()
     },
     methods: {
-      async loadstorage_location() {
-        storage_locationService.getAll().then((data) => {
-          this.locations = data
+      async loadCategory() {
+        categoryService.getAll().then((data) => {
+          this.categories = data
           this.finished = true
         })
       },
-      async removestorage_location() {
-        storage_locationService.remove(this.remove.id).then((data) => {
-            this.loadstorage_location()
+      async removeCategory() {
+        categoryService.remove(this.remove.id).then((data) => {
+            this.loadCategory()
         })
       },
       removeModal(id, name) {

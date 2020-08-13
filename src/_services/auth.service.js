@@ -1,13 +1,13 @@
 import { authHeader } from '../_helpers'
 
 function refresh () {
-  const user = JSON.parse(localStorage.getItem('user'))
+  const user = JSON.parse(window.localStorage.getItem('user'))
   if (user && user.token) {
     const requestOptions = {
       method: 'GET',
       headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + user.token }
     }
-    return fetch(`${process.env.VUE_APP_API_URL}/jwt/refresh`, requestOptions)
+    return window.fetch(`${process.env.VUE_APP_API_URL}/jwt/refresh`, requestOptions)
       .then(handleResponse)
       .then(token => {
         return token
@@ -24,11 +24,11 @@ function login (email, password) {
     body: JSON.stringify({ email, password })
   }
 
-  return fetch(`${process.env.VUE_APP_API_URL}/login`, requestOptions)
+  return window.fetch(`${process.env.VUE_APP_API_URL}/login`, requestOptions)
     .then(handleResponse)
     .then(user => {
       if (user.token && user.twofactor !== 1) {
-        localStorage.setItem('user', JSON.stringify(user))
+        window.localStorage.setItem('user', JSON.stringify(user))
       }
       return user
     })
@@ -41,13 +41,13 @@ function loginToken (token) {
     body: JSON.stringify({ token })
   }
 
-  return fetch(`${process.env.VUE_APP_API_URL}/logintoken`, requestOptions)
+  return window.fetch(`${process.env.VUE_APP_API_URL}/logintoken`, requestOptions)
     .then(handleResponse)
     .then(user => {
       // login successful if there's a jwt token in the response
       if (user.token) {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('user', JSON.stringify(user))
+        window.localStorage.setItem('user', JSON.stringify(user))
       }
       return user
     })
@@ -59,9 +59,9 @@ function logout () {
       method: 'GET',
       headers: token
     }
-    return fetch(`${process.env.VUE_APP_API_URL}/jwt/logout/session`, requestOptions).then(function(response){
-      localStorage.removeItem('user')
-    });
+    return window.fetch(`${process.env.VUE_APP_API_URL}/jwt/logout/session`, requestOptions).then(function (response) {
+      window.localStorage.removeItem('user')
+    })
   })
 }
 
@@ -71,7 +71,7 @@ function handleResponse (response) {
 
     if (!response.ok) {
       if (response.status === 401) {
-        localStorage.removeItem('user')
+        window.localStorage.removeItem('user')
         window.location = '/login'
       }
       const error = (data && data.error) || response.statusText

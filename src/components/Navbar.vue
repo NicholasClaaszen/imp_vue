@@ -17,6 +17,7 @@
                                 right v-if="this.$store.state.authentication.user.user.roles.includes('organisation')"
                         >
                             <b-dropdown-item v-on:click="$router.push('/contacts')">{{ $t('navbar.label.contacts') }}</b-dropdown-item>
+                            <b-dropdown-item v-on:click="$router.push('/storage/containers')">{{ $t('navbar.label.storage_containers') }}</b-dropdown-item>
                             <b-dropdown-item v-on:click="$router.push('/storage/locations')">{{ $t('navbar.label.storage_locations') }}</b-dropdown-item>
                             <b-dropdown-item v-on:click="$router.push('/categories')">{{ $t('navbar.label.categories') }}</b-dropdown-item>
                             <b-dropdown-item v-on:click="$router.push('/organisations')">{{ $t('navbar.label.organisations') }}</b-dropdown-item>

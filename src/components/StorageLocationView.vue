@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12">
                 <h1>
-                    {{ $t('contact.title') }}
+                    {{ $t('storage_location.title') }}
                 </h1>
             </div>
         </div>
@@ -13,19 +13,22 @@
                     <thead>
                         <tr>
                             <th>
-                                {{ $t('contact.table.header.name') }}
+                                {{ $t('storage_location.table.header.name') }}
                             </th>
                             <th>
-                                {{ $t('contact.table.header.email') }}
+                                {{ $t('storage_location.table.header.address') }}
                             </th>
                             <th>
-                                {{ $t('contact.table.header.phone') }}
+                                {{ $t('storage_location.table.header.organisation') }}
+                            </th>
+                            <th>
+                                {{ $t('storage_location.table.header.contact') }}
                             </th>
                             <th class="btn-group-sm">
                                 <button
-                                        v-on:click="$router.push('/contacts/new')"
+                                        v-on:click="$router.push('/storage/locations/new')"
                                         v-b-tooltip.hover
-                                        :title="$t('contact.table.actions.new')"
+                                        :title="$t('storage_location.table.actions.new')"
                                         class="btn btn-success btn-sm float-right"
                                 >
                                     <i class="fa fa-plus"></i>
@@ -34,30 +37,35 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="item in contacts" :key="item.id">
+                        <tr v-for="item in locations" :key="item.id">
                             <td>
                                 {{ item.name }}
                             </td>
                             <td>
-                                {{ item.email }}
+                                {{ item.address }}
                             </td>
                             <td>
-                                {{ item.phone }}
+                                {{ item.organisation_name }}
+                            </td>
+                            <td>
+                                {{ item.contact_name }}<br/>
+                                {{ item.contact_phone }}<br/>
+                                <a :href="`mailto:${item.contact_email}`" target="_blank">{{ item.contact_email }}</a>
                             </td>
                             <td>
                                 <div class="btn-group btn-group-sm float-right">
                                     <button
                                             v-b-tooltip.hover
-                                            :title="$t('contact.table.actions.delete')"
+                                            :title="$t('storage_location.table.actions.delete')"
                                             class="btn btn-danger"
                                             v-on:click="removeModal(item.id, item.name)"
                                     >
                                         <i class="fa fa-trash"></i>
                                     </button>
                                     <button
-                                            v-on:click="$router.push(`/contacts/${item.id}`)"
+                                            v-on:click="$router.push(`/storage/locations/${item.id}`)"
                                             v-b-tooltip.hover
-                                            :title="$t('contact.table.actions.edit')"
+                                            :title="$t('storage_location.table.actions.edit')"
                                             class="btn btn-success"
                                     >
                                         <i class="fa fa-pencil"></i>
@@ -82,12 +90,12 @@
         <b-modal
                 id="modal_confirm_delete"
                 size="lg"
-                :title="$t('contact.modal.confirm_delete.title')"
-                :ok-title="$t('contact.modal.confirm_delete.buttons.ok')"
-                :cancel-title="$t('contact.modal.confirm_delete.buttons.cancel')"
-                @ok="removecontact"
+                :title="$t('storage_location.modal.confirm_delete.title')"
+                :ok-title="$t('storage_location.modal.confirm_delete.buttons.ok')"
+                :cancel-title="$t('storage_location.modal.confirm_delete.buttons.cancel')"
+                @ok="removestorage_location"
         >
-            <div v-html="$t('contact.modal.confirm_delete.text', [this.remove.name])"></div>
+            <div v-html="$t('storage_location.modal.confirm_delete.text', [this.remove.name])"></div>
         </b-modal>
     </div>
 </template>
@@ -95,14 +103,14 @@
 
 
 <script>
-  import { contactService } from '../_services'
+  import { storageLocationService } from '../_services'
 
   export default {
-    name: 'contact_view',
+    name: 'storageLocationView',
     data: () => {
       return {
         finished: false,
-        contacts: [],
+        locations: [],
         remove: {
           id: '',
           name: ''
@@ -110,18 +118,18 @@
       }
     },
     mounted() {
-        this.loadcontact()
+        this.loadstorage_location()
     },
     methods: {
-      async loadcontact() {
-        contactService.getAll().then((data) => {
-          this.contacts = data
+      async loadstorage_location() {
+        storageLocationService.getAll().then((data) => {
+          this.locations = data
           this.finished = true
         })
       },
-      async removecontact() {
-        contactService.remove(this.remove.id).then((data) => {
-            this.loadcontact()
+      async removestorage_location() {
+        storageLocationService.remove(this.remove.id).then((data) => {
+            this.loadstorage_location()
         })
       },
       removeModal(id, name) {

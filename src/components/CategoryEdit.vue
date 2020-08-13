@@ -60,7 +60,7 @@
   import { categoryService } from '../_services'
 
   export default {
-    name: 'Category_edit',
+    name: 'CategoryEdit',
     data: () => {
       return {
         finished: false,

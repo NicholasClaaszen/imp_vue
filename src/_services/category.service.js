@@ -1,84 +1,84 @@
-import { authHeader } from '../_helpers';
+import { authHeader } from '../_helpers'
 
-function get(id) {
-  return authHeader().then(function(token){
+function get (id) {
+  return authHeader().then(function (token) {
     const requestOptions = {
       method: 'GET',
       headers: token
-    };
+    }
 
-    return fetch(`${process.env.VUE_APP_API_URL}/category/${id}`, requestOptions).then(function(response){
+    return window.fetch(`${process.env.VUE_APP_API_URL}/category/${id}`, requestOptions).then(function (response) {
       return response.text().then(text => {
-        const data = text && JSON.parse(text);
-        return data;
-      });
-    });
+        const data = text && JSON.parse(text)
+        return data
+      })
+    })
   })
 }
 
-function getAll() {
-  return authHeader().then(function(token){
+function getAll () {
+  return authHeader().then(function (token) {
     const requestOptions = {
       method: 'GET',
       headers: token
-    };
+    }
 
-    return fetch(`${process.env.VUE_APP_API_URL}/category`, requestOptions).then(function(response){
+    return window.fetch(`${process.env.VUE_APP_API_URL}/category`, requestOptions).then(function (response) {
       return response.text().then(text => {
-        const data = text && JSON.parse(text);
-        return data;
-      });
-    });
+        const data = text && JSON.parse(text)
+        return data
+      })
+    })
   })
 }
 
-function post(name, icon) {
-  return authHeader().then(function(token){
+function post (name, icon) {
+  return authHeader().then(function (token) {
     const requestOptions = {
       method: 'POST',
       headers: token,
-      body: JSON.stringify({name, icon})
-    };
+      body: JSON.stringify({ name, icon })
+    }
 
-    return fetch(`${process.env.VUE_APP_API_URL}/category`, requestOptions).then(function(response){
+    return window.fetch(`${process.env.VUE_APP_API_URL}/category`, requestOptions).then(function (response) {
       return response.text().then(text => {
-        const data = text && JSON.parse(text);
-        return data;
-      });
-    });
+        const data = text && JSON.parse(text)
+        return data
+      })
+    })
   })
 }
 
-function put(id, name, icon) {
-  return authHeader().then(function(token){
+function put (id, name, icon) {
+  return authHeader().then(function (token) {
     const requestOptions = {
       method: 'PUT',
       headers: token,
-      body: JSON.stringify({name, icon})
-    };
+      body: JSON.stringify({ name, icon })
+    }
 
-    return fetch(`${process.env.VUE_APP_API_URL}/category/${id}`, requestOptions).then(function(response){
+    return window.fetch(`${process.env.VUE_APP_API_URL}/category/${id}`, requestOptions).then(function (response) {
       return response.text().then(text => {
-        const data = text && JSON.parse(text);
-        return data;
-      });
-    });
+        const data = text && JSON.parse(text)
+        return data
+      })
+    })
   })
 }
 
-function remove(id) {
-  return authHeader().then(function(token){
+function remove (id) {
+  return authHeader().then(function (token) {
     const requestOptions = {
       method: 'DELETE',
       headers: token
-    };
+    }
 
-    return fetch(`${process.env.VUE_APP_API_URL}/category/${id}`, requestOptions).then(function(response){
+    return window.fetch(`${process.env.VUE_APP_API_URL}/category/${id}`, requestOptions).then(function (response) {
       return response.text().then(text => {
-        const data = text && JSON.parse(text);
-        return data;
-      });
-    });
+        const data = text && JSON.parse(text)
+        return data
+      })
+    })
   })
 }
 
@@ -88,4 +88,4 @@ export const categoryService = {
   post,
   put,
   remove
-};
+}

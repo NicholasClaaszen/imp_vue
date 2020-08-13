@@ -110,6 +110,7 @@
 			"organisations": "Organisaties",
 			"password": "Wachtwoord",
 			"settings": "Beheer",
+			"storage_containers": "Opslag Containers",
 			"storage_locations": "Opslag Locaties"
 		},
 		"modal": {
