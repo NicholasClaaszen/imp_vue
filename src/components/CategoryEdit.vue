@@ -25,7 +25,7 @@
                         />
                     </b-form-group>
                     <b-form-group
-                            id="name-group"
+                            id="icon-group"
                             :label="$t('category_edit.form.label.icon')"
                             label-for="icon">
                         <b-form-input
@@ -92,7 +92,7 @@
             this.isNew = true
             this.finished = true
           } else {
-            this.$router.push('/categories')
+            await this.$router.push('/categories')
           }
         } else {
           categoryService.get(this.$route.params.id).then((data) => {

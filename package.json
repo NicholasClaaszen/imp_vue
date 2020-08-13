@@ -6,7 +6,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "standard": "standard --plugin html **/*.{js,vue}"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
@@ -18,7 +19,6 @@
     "config": "^3.3.0",
     "core-js": "^3.6.4",
     "es6-promise": "^4.2.8",
-    "eslint-plugin-html": "^6.0.2",
     "validator": "^12.2.0",
     "vue": "^2.6.11",
     "vue-i18n": "^8.20.0",
@@ -29,6 +29,7 @@
     "@vue/cli-service": "^4.2.0",
     "eslint": "^6.7.2",
     "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-html": "^6.0.3",
     "eslint-plugin-vue": "^7.0.0-beta.1",
     "standard": "^14.3.4",
     "vue-template-compiler": "^2.6.11"

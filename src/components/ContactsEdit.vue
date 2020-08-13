@@ -25,7 +25,7 @@
                         />
                     </b-form-group>
                     <b-form-group
-                            id="name-group"
+                            id="email-group"
                             :label="$t('contact_edit.form.label.email')"
                             label-for="email">
                         <b-form-input
@@ -35,7 +35,7 @@
                         />
                     </b-form-group>
                     <b-form-group
-                            id="name-group"
+                            id="phone-group"
                             :label="$t('contact_edit.form.label.phone')"
                             label-for="phone">
                         <b-form-input
@@ -86,8 +86,8 @@
         await this.loadContact()
     },
     methods: {
-      handleSubmit() {
-        if(this.isNew) {
+      handleSubmit: function () {
+        if (this.isNew) {
           contactService.post(this.form.name, this.form.email, this.form.phone).then(() => {
             this.$router.push('/contacts')
           })
@@ -97,17 +97,17 @@
           })
         }
       },
-      async loadContact() {
-        if(!validator.isUUID(this.$route.params.id)) {
-          if(this.$route.params.id === 'new') {
+      loadContact: async function () {
+        if (!validator.isUUID(this.$route.params.id)) {
+          if (this.$route.params.id === 'new') {
             this.isNew = true
             this.finished = true
           } else {
-            this.$router.push('/contacts')
+            await this.$router.push('/contacts')
           }
         } else {
           contactService.get(this.$route.params.id).then((data) => {
-            if(data.id.length === 0) {
+            if (data.id.length === 0) {
               this.$router.push('/contacts')
             } else {
               this.form.name = data.name

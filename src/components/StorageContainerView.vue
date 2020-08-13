@@ -25,6 +25,7 @@
                             </th>
                         </tr>
                     </thead>
+                    <tbody>
                         <template v-for="location in locations">
                             <tr class="table-dark" :key="location.location_id">
                                 <td>
@@ -144,7 +145,7 @@
         })
       },
       async removestorage_container() {
-        storageContainerService.remove(this.remove.id).then((data) => {
+        storageContainerService.remove(this.remove.id).then(() => {
             this.loadstorage_container()
         })
       },

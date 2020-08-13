@@ -120,7 +120,7 @@
         })
       },
       async removecontact() {
-        contactService.remove(this.remove.id).then((data) => {
+        contactService.remove(this.remove.id).then(() => {
             this.loadcontact()
         })
       },

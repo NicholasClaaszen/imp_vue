@@ -3,7 +3,6 @@ import Router from 'vue-router'
 
 import HomePage from '../components/Home'
 import LoginPage from '../components/Login'
-import SSO from '../components/SSO'
 import CategoryView from '../components/CategoryView'
 import CategoryEdit from '../components/CategoryEdit'
 import OrganisationView from '../components/OrganisationView'
@@ -22,7 +21,6 @@ export const router = new Router({
   routes: [
     { path: '/', component: HomePage },
     { path: '/login', component: LoginPage },
-    { path: '/sso', component: SSO },
     { path: '/logout', component: LoginPage },
     { path: '/categories', component: CategoryView },
     { path: '/categories/:id', component: CategoryEdit },

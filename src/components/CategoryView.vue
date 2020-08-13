@@ -114,7 +114,7 @@
         })
       },
       async removeCategory() {
-        categoryService.remove(this.remove.id).then((data) => {
+        categoryService.remove(this.remove.id).then(() => {
             this.loadCategory()
         })
       },
