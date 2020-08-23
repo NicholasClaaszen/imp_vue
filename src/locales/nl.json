@@ -109,6 +109,7 @@
 			"logout": "Uitloggen",
 			"organisations": "Organisaties",
 			"password": "Wachtwoord",
+			"property": "Properties",
 			"settings": "Beheer",
 			"storage_containers": "Opslag Containers",
 			"storage_locations": "Opslag Locaties"
@@ -169,6 +170,58 @@
 		},
 		"title": {
 			"existing": "Organisatie bewerken"
+		}
+	},
+	"property": {
+		"modal": {
+			"confirm_delete": {
+				"buttons": {
+					"cancel": "Terug",
+					"ok": "Property verwijderen"
+				},
+				"text": "<p>U staat op het punt de volgende Property te verwijderen:</p><p><strong>{0}</strong></p><p>Weet u dit zeker?</p>",
+				"title": "Opslag container verwijderen"
+			}
+		},
+		"table": {
+			"actions": {
+				"delete": "Property verwijderen",
+				"edit": "Property aanpassen",
+				"new": "Nieuwe Property"
+			},
+			"header": {
+				"name": "Naam"
+			}
+		},
+		"title": "Properties Beheren"
+	},
+	"property_edit": {
+		"form": {
+			"button": {
+				"back": "Terug",
+				"submit": "Opslaan"
+			},
+			"label": {
+				"category": "Categorie",
+				"drift": "Drift",
+				"name": "Naam",
+				"type": "Property type"
+			}
+		},
+		"options": {
+			"label": {
+				"name": "Opties"
+			}
+		},
+		"title": {
+			"existing": "Property bewerken",
+			"new": "Property toevoegen"
+		},
+		"types": {
+			"free_text": "Vrij textveld",
+			"select_multiple": "Selecteer meerdere tags",
+			"select_one": "Selecteer een tag",
+			"toggle": "Ja/Nee toggle"
 		}
 	},
 	"storage_container": {

@@ -20,6 +20,7 @@
                             <b-dropdown-item v-on:click="$router.push('/storage/containers')">{{ $t('navbar.label.storage_containers') }}</b-dropdown-item>
                             <b-dropdown-item v-on:click="$router.push('/storage/locations')">{{ $t('navbar.label.storage_locations') }}</b-dropdown-item>
                             <b-dropdown-item v-on:click="$router.push('/categories')">{{ $t('navbar.label.categories') }}</b-dropdown-item>
+                            <b-dropdown-item v-on:click="$router.push('/property')">{{ $t('navbar.label.property') }}</b-dropdown-item>
                             <b-dropdown-item v-on:click="$router.push('/organisations')">{{ $t('navbar.label.organisations') }}</b-dropdown-item>
                         </b-nav-item-dropdown>
                         <b-nav-item v-on:click = "$bvModal.show('password_modal')" right>{{ $t('navbar.label.password') }}</b-nav-item>

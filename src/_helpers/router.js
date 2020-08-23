@@ -13,6 +13,8 @@ import StorageLocationView from '../components/StorageLocationView'
 import StorageLocationEdit from '../components/StorageLocationEdit'
 import StorageContainerView from '../components/StorageContainerView'
 import StorageContainerEdit from '../components/StorageContainerEdit'
+import PropertyView from '../components/PropertyView'
+import PropertyEdit from '../components/PropertyEdit'
 
 Vue.use(Router)
 
@@ -32,6 +34,8 @@ export const router = new Router({
     { path: '/storage/locations/:id', component: StorageLocationEdit },
     { path: '/storage/containers', component: StorageContainerView },
     { path: '/storage/containers/:id', component: StorageContainerEdit },
+    { path: '/property', component: PropertyView },
+    { path: '/property/:id', component: PropertyEdit },
     // otherwise redirect to home
     { path: '*', redirect: '/' }
   ]
