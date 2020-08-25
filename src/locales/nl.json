@@ -84,6 +84,55 @@
 	"general": {
 		"loading": "Bezig met laden..."
 	},
+	"item": {
+		"modal": {
+			"confirm_delete": {
+				"buttons": {
+					"cancel": "Terug",
+					"ok": "Item verwijderen"
+				},
+				"text": "<p>U staat op het punt de volgende Item te verwijderen:</p><p><strong>{0}</strong></p><p>Weet u dit zeker?</p>",
+				"title": "Item verwijderen"
+			}
+		},
+		"table": {
+			"actions": {
+				"delete": "item verwijderen",
+				"edit": "item aanpassen",
+				"new": "Nieuwe item"
+			}
+		}
+	},
+	"item_edit": {
+		"form": {
+			"button": {
+				"back": "Terug",
+				"startwebcam": "Webcam gebruiken",
+				"submit": "Opslaan"
+			},
+			"label": {
+				"broken": "Reparatie nodig",
+				"category": "Categorie",
+				"container": "Opslag Container",
+				"dirty": "Moet gewassen worden",
+				"image_placeholder": "Afbeelding uploaden",
+				"in_use": "In gebruik",
+				"name": "Naam",
+				"tag_number": "Tag"
+			}
+		},
+		"modal": {
+			"webcam": {
+				"cancel": "Sluiten",
+				"ok": "Foto maken",
+				"title": "Webcam"
+			}
+		},
+		"title": {
+			"existing": "Item bewerken",
+			"new": "Item toevoegen"
+		}
+	},
 	"login": {
 		"form": {
 			"button": {
