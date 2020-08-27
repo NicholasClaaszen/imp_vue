@@ -186,6 +186,11 @@
                         >
                         </b-form-checkbox>
 
+                        <b-form-textarea
+                                v-else-if="prop.type === 'freetext'"
+                                id="textarea-default"
+                                placeholder="Default textarea"
+                        ></b-form-textarea>
 
                     </b-form-group>
 
