@@ -107,6 +107,7 @@
 		"form": {
 			"button": {
 				"back": "Terug",
+				"next": "Opslaan & Volgende",
 				"startwebcam": "Webcam gebruiken",
 				"submit": "Opslaan"
 			},

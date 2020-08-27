@@ -911,6 +911,23 @@
                                         </translations>
                                     </concept_node>
                                     <concept_node>
+                                        <name>next</name>
+                                        <definition_loaded>false</definition_loaded>
+                                        <description></description>
+                                        <comment></comment>
+                                        <default_text></default_text>
+                                        <translations>
+                                            <translation>
+                                                <language>en-US</language>
+                                                <approved>false</approved>
+                                            </translation>
+                                            <translation>
+                                                <language>nl-NL</language>
+                                                <approved>false</approved>
+                                            </translation>
+                                        </translations>
+                                    </concept_node>
+                                    <concept_node>
                                         <name>startwebcam</name>
                                         <definition_loaded>false</definition_loaded>
                                         <description></description>

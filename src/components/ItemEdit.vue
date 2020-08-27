@@ -63,7 +63,6 @@
                                 id="tag_number"
                                 v-model="form.tag_number"
                                 type="text"
-                                required
                         />
                     </b-form-group>
                     <b-form-group
@@ -192,7 +191,8 @@
 
                     <b-button-group class="float-right">
                         <b-button  v-on:click="$router.push('/item')" variant="primary">{{ $t('item_edit.form.button.back') }}</b-button>
-                        <b-button type="submit" variant="success">{{ $t('item_edit.form.button.submit') }}</b-button>
+                        <b-button  v-on:click="handleSubmit('/item/new')" variant="primary">{{ $t('item_edit.form.button.next') }}</b-button>
+                        <b-button v-on:click="handleSubmit('/')" variant="success">{{ $t('item_edit.form.button.submit') }}</b-button>
                     </b-button-group>
                 </b-form>
             </div>
@@ -333,7 +333,7 @@
         }
     },
     methods: {
-      async handleSubmit() {
+      async handleSubmit(path) {
         this.finished = false
         if(this.form.image_placeholder !== null) {
           await uploadService.postImage(this.form.image_placeholder).then((data) => {
@@ -351,14 +351,14 @@
           itemService.post(this.form.name, this.form.category, this.form.container, this.form.dirty, this.form.broken,
             this.form.in_use, this.form.tag_number, this.form.image_url, this.form.processed_options
           ).then(() => {
-            this.$router.push('/item')
+            this.$router.push(path)
           })
         } else {
           itemService.put(this.$route.params.id, this.form.name, this.form.category, this.form.container,
             this.form.dirty, this.form.broken, this.form.in_use, this.form.tag_number, this.form.image_url,
             this.form.processed_options
           ).then(() => {
-            this.$router.push('/item')
+            this.$router.push(path)
           })
         }
       },

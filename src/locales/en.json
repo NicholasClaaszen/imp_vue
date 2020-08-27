@@ -107,6 +107,7 @@
 		"form": {
 			"button": {
 				"back": "Back",
+				"next": "Save & Next",
 				"startwebcam": "Capture from Webcam",
 				"submit": "Save"
 			},
