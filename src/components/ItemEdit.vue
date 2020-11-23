@@ -189,7 +189,7 @@
                         <b-form-textarea
                                 v-else-if="prop.type === 'free_text'"
                                 id="textarea-default"
-                                placeholder="Default textarea"
+                                placeholder=""
                         ></b-form-textarea>
 
                     </b-form-group>
@@ -356,14 +356,14 @@
           itemService.post(this.form.name, this.form.category, this.form.container, this.form.dirty, this.form.broken,
             this.form.in_use, this.form.tag_number, this.form.image_url, this.form.processed_options
           ).then(() => {
-            this.$router.push(path)
+            window.location.href = path
           })
         } else {
           itemService.put(this.$route.params.id, this.form.name, this.form.category, this.form.container,
             this.form.dirty, this.form.broken, this.form.in_use, this.form.tag_number, this.form.image_url,
             this.form.processed_options
           ).then(() => {
-            this.$router.push(path)
+            window.location.href = path
           })
         }
       },
