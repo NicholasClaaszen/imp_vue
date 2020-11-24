@@ -16,6 +16,22 @@ function get (id) {
   })
 }
 
+function getForBox (box) {
+  return authHeader().then(function (token) {
+    const requestOptions = {
+      method: 'GET',
+      headers: token
+    }
+
+    return window.fetch(`${process.env.VUE_APP_API_URL}/item?box=${box}`, requestOptions).then(function (response) {
+      return response.text().then(text => {
+        const data = text && JSON.parse(text)
+        return data
+      })
+    })
+  })
+}
+
 function getAll () {
   return authHeader().then(function (token) {
     const requestOptions = {
@@ -83,6 +99,7 @@ function remove (id) {
 
 export const itemService = {
   get,
+  getForBox,
   getAll,
   post,
   put,

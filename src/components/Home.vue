@@ -6,7 +6,12 @@
             <thead>
                 <tr>
                     <th colspan="4">
-                        &nbsp;
+                        <b-form-select
+                                v-model="box"
+                                :options="storageBoxes"
+                                @input="loadItem"
+                        >
+                        </b-form-select>
                     </th>
                     <th class="btn-group-sm">
                         <button
@@ -74,11 +79,13 @@
 </template>
 
 <script>
-  import { itemService } from '../_services'
+  import { itemService, storageContainerService } from '../_services'
 
   export default {
     data: () => {
       return {
+        box: '',
+        storageBoxes: '',
         items: [],
         remove: {
           id: '',
@@ -88,14 +95,34 @@
     },
     name: 'Home',
     mounted() {
-      this.loadItem()
+      storageContainerService.getAll().then((data) => {
+        let holder = {}
+        data.forEach((element) => {
+          if(holder[element.location_name] === undefined) {
+            holder[element.location_name] = []
+          }
+          holder[element.location_name].push({
+            text: element.name,
+            value: element.id
+          })
+        })
+        this.storageBoxes = []
+        for(const [key, arr] of Object.entries(holder)) {
+          this.storageBoxes.push({
+            label: key,
+            options: arr
+          })
+        }
+      })
     },
     methods: {
       async loadItem() {
-        itemService.getAll().then((data) => {
-          this.items = data
-          this.finished = true
-        })
+        if(this.box.length > 0) {
+          itemService.getForBox().then((data) => {
+            this.items = data
+            this.finished = true
+          })
+        }
       },
       async removeItem() {
         itemService.remove(this.remove.id).then(() => {
