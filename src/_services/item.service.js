@@ -16,14 +16,14 @@ function get (id) {
   })
 }
 
-function getForBox (box) {
+function getForBox (storageContainer) {
   return authHeader().then(function (token) {
     const requestOptions = {
       method: 'GET',
       headers: token
     }
 
-    return window.fetch(`${process.env.VUE_APP_API_URL}/item?box=${box}`, requestOptions).then(function (response) {
+    return window.fetch(`${process.env.VUE_APP_API_URL}/item?storageContainer=${storageContainer}`, requestOptions).then(function (response) {
       return response.text().then(text => {
         const data = text && JSON.parse(text)
         return data

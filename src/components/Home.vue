@@ -7,8 +7,8 @@
                 <tr>
                     <th colspan="4">
                         <b-form-select
-                                v-model="box"
-                                :options="storageBoxes"
+                                v-model="storageContainer"
+                                :options="storageContainers"
                                 @input="loadItem"
                         >
                         </b-form-select>
@@ -84,8 +84,8 @@
   export default {
     data: () => {
       return {
-        box: '',
-        storageBoxes: '',
+        storageContainer: '',
+        storageContainers: '',
         items: [],
         remove: {
           id: '',
@@ -106,9 +106,9 @@
             value: element.id
           })
         })
-        this.storageBoxes = []
+        this.storageContainers = []
         for(const [key, arr] of Object.entries(holder)) {
-          this.storageBoxes.push({
+          this.storageContainers.push({
             label: key,
             options: arr
           })
@@ -117,8 +117,8 @@
     },
     methods: {
       async loadItem() {
-        if(this.box.length > 0) {
-          itemService.getForBox().then((data) => {
+        if(this.storageContainer.length > 0) {
+          itemService.getForBox(this.storageContainer).then((data) => {
             this.items = data
             this.finished = true
           })
