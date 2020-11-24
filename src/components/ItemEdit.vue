@@ -350,6 +350,7 @@
           })
         } else if(this.isNew) {
           alert('image required')
+          return false
         }
         this.processOptions()
         if(this.isNew) {
@@ -425,32 +426,34 @@
       processOptions() {
         this.form.processed_options = [];
         for(const key of Object.keys(this.form.options)) {
-          if(Array.isArray(this.form.options[key])) {
-            for (const opt in this.form.options[key]) {
+          if(this.form.options[key] !== undefined) {
+            if(Array.isArray(this.form.options[key])) {
+              for (const opt in this.form.options[key]) {
+                this.form.processed_options.push({
+                  propertyId: key,
+                  optionId: this.form.options[key][opt],
+                  freetext: null
+                })
+              }
+            } else if(typeof this.form.options[key] === 'boolean') {
               this.form.processed_options.push({
                 propertyId: key,
-                optionId: this.form.options[key][opt],
+                optionId: null,
+                freetext: this.form.options[key]
+              })
+            } else if(validator.isUUID(this.form.options[key])) {
+              this.form.processed_options.push({
+                propertyId: key,
+                optionId: this.form.options[key],
                 freetext: null
               })
+            } else {
+              this.form.processed_options.push({
+                propertyId: key,
+                optionId: null,
+                freetext: this.form.options[key]
+              })
             }
-          } else if(typeof this.form.options[key] === 'boolean') {
-            this.form.processed_options.push({
-              propertyId: key,
-              optionId: null,
-              freetext: this.form.options[key]
-            })
-          } else if(validator.isUUID(this.form.options[key])) {
-            this.form.processed_options.push({
-              propertyId: key,
-              optionId: this.form.options[key],
-              freetext: null
-            })
-          } else {
-            this.form.processed_options.push({
-              propertyId: key,
-              optionId: null,
-              freetext: this.form.options[key]
-            })
           }
         }
       }
