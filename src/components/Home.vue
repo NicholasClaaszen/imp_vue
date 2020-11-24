@@ -102,7 +102,7 @@
             holder[element.location_name] = []
           }
           holder[element.location_name].push({
-            text: element.name + '(' + element.description + ')',
+            text: element.name + (element.description.length > 0 ? ' (' + element.description + ')' : ''),
             value: element.id
           })
         })
